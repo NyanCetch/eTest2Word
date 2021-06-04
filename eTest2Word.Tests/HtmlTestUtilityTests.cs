@@ -5,7 +5,7 @@ using NUnit.Framework;
 namespace eTest2Word.Tests
 {
     [TestFixture]
-    public class HtmlParsingTests
+    public class HtmlTestUtilityTests
     {
         [TestCase(
             "<div><p>Hello <span>this <span>fucking</span></span> World </p><p>My Friends</p></div", 
