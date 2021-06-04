@@ -26,6 +26,22 @@ namespace eTest2Word.Core
         {
             return node.Name is "img";
         }
+
+        public void SimplifyQuestionBlock(HtmlNode node)
+        {
+            // По очереди пробежаться по всем детям, упростить их до текста или изображения
+            // и обернуть в параграфы
+            for (var i = 0; i < node.ChildNodes.Count; ++i)
+            {
+                var childNode = node.ChildNodes[i];
+                var simplifiedNode = SimplifyBlock(childNode);
+                if (simplifiedNode == null)
+                    continue;
+                
+                var newNode = HtmlNode.CreateNode($"<p>{simplifiedNode.WriteTo()}</p>");
+                node.ReplaceChild(newNode, childNode);
+            }
+        }
         
         /// <summary>
         /// Упрощает Html-элемент до простого текста или элемента изображения
@@ -57,7 +73,7 @@ namespace eTest2Word.Core
                 
                 // Если из элемента не удалось достать ничего,
                 // тогда убираем за ненадобностью
-                if (simpleNode == null)
+                if (simpleNode == null || IsTextNode(simpleNode) && string.IsNullOrEmpty(simpleNode.InnerText))
                 {
                     node.RemoveChild(complexNode);
                     continue;
