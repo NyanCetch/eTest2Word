@@ -27,6 +27,18 @@ namespace eTest2Word.Core
             return node.Name is "img";
         }
 
+        public static bool IsShortAnswerLabel(HtmlNode node)
+        {
+            if (node.Name is "label")
+            {
+                var id = node.GetAttributeValue("id", string.Empty);
+                if (!string.IsNullOrEmpty(id))
+                    return id.Contains("answer");
+            }
+
+            return false;
+        }
+
         /// <summary>
         /// Метод для подготовки ноды с заданием теста
         /// убирает лишнюю стилизацию и оставляет голый текст и картинки
@@ -36,15 +48,18 @@ namespace eTest2Word.Core
         {
             // По очереди пробежаться по всем детям, упростить их до текста или изображения
             // и обернуть в параграфы
-            for (var i = 0; i < node.ChildNodes.Count; ++i)
+            for (var i = 0; i < node.ChildNodes.ToArray().Length; ++i)
             {
                 var childNode = node.ChildNodes[i];
                 var simplifiedNode = SimplifyBlock(childNode);
                 if (simplifiedNode == null)
+                {
+                    node.ChildNodes.Remove(childNode);
                     continue;
-                
-                var newNode = HtmlNode.CreateNode($"<p>{simplifiedNode.WriteTo()}</p>");
-                node.ReplaceChild(newNode, childNode);
+                }
+
+                var clonedNode = simplifiedNode.Clone();
+                node.ReplaceChild(clonedNode, childNode);
             }
         }
 
@@ -68,8 +83,8 @@ namespace eTest2Word.Core
             if (!IsComplex(node))
                 return node;
 
-            // Убираем ненужную подпись
-            if (node.Name is "label")
+            // Подпись для поля ввода в задании с вводом ответа обычно содержит мусор, удаляем 
+            if (IsShortAnswerLabel(node))
                 return null;
             
             // Из поле ввода вытаскиваем значение

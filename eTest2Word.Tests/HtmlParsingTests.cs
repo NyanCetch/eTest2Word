@@ -23,6 +23,10 @@ namespace eTest2Word.Tests
             "<p><img src=''><br></p>",
             ExpectedResult = "<img src=''>",
             TestName = "Изображение")]
+        [TestCase(
+            "<label><span></span><div><p>Пункт Дидо</p></div></label>",
+            ExpectedResult = "Пункт Дидо",
+            TestName = "Текст подписи поле для ввода")]
         public string SimplifyNodeTest(string htmlText)
         {
             var node = HtmlNode.CreateNode(htmlText);
@@ -33,7 +37,7 @@ namespace eTest2Word.Tests
 
         [TestCase(
             "<div><p>Lorem ipsum dolor</p><p><img src=''><br></p><p><span>sit amet, consectetur</span><br></p></div>", 
-            ExpectedResult = "<div><p>Lorem ipsum dolor</p><p><img src=''></p><p>sit amet, consectetur</p></div>",
+            ExpectedResult = "<div>Lorem ipsum dolor<img src=''>sit amet, consectetur</div>",
             TestName = "Вопрос с изображением и стилизованным текстом")]
         public string SimplifyQuestionNodeTest(string htmlText)
         {
