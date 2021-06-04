@@ -1,33 +1,38 @@
-﻿using System;
-using System.Linq;
-using System.Net;
+﻿using System.Linq;
 using HtmlAgilityPack;
 
 namespace eTest2Word.Core
 {
-    public class SimpleParser
+    public static class HtmlTestUtility
     {
+        public const string INPUT_EMPTY_PLACEHOLDER = "<пусто>";
+
         /// <summary>
         /// Проверяет, можно ли упростить узел и дальше
         /// </summary>
         /// <param name="node"></param>
         /// <returns></returns>
-        public bool IsComplex(HtmlNode node)
+        public static bool IsComplex(HtmlNode node)
         {
             return (IsImageNode(node) || IsTextNode(node)) == false;
         }
 
-        public bool IsTextNode(HtmlNode node)
+        public static bool IsTextNode(HtmlNode node)
         {
             return node.Name is "#text";
         }
 
-        public bool IsImageNode(HtmlNode node)
+        public static bool IsImageNode(HtmlNode node)
         {
             return node.Name is "img";
         }
 
-        public void SimplifyQuestionBlock(HtmlNode node)
+        /// <summary>
+        /// Метод для подготовки ноды с заданием теста
+        /// убирает лишнюю стилизацию и оставляет голый текст и картинки
+        /// </summary>
+        /// <param name="node"></param>
+        public static void SimplifyQuestionBlock(HtmlNode node)
         {
             // По очереди пробежаться по всем детям, упростить их до текста или изображения
             // и обернуть в параграфы
@@ -42,13 +47,22 @@ namespace eTest2Word.Core
                 node.ReplaceChild(newNode, childNode);
             }
         }
+
+        public static string GetInputValue(HtmlNode inputNode)
+        {
+            var value = inputNode.GetAttributeValue("value", string.Empty);
+            if (string.IsNullOrEmpty(value))
+                value = INPUT_EMPTY_PLACEHOLDER;
+
+            return value;
+        }
         
         /// <summary>
         /// Упрощает Html-элемент до простого текста или элемента изображения
         /// </summary>
         /// <param name="node"></param>
         /// <returns></returns>
-        public HtmlNode SimplifyBlock(HtmlNode node)
+        public static HtmlNode SimplifyBlock(HtmlNode node)
         {
             // Если уже текст или изображение, их же и возвращаем обратно
             if (!IsComplex(node))
@@ -60,7 +74,7 @@ namespace eTest2Word.Core
             
             // Из поле ввода вытаскиваем значение
             if (node.Name is "input")
-                return HtmlNode.CreateNode(node.GetAttributeValue("value", string.Empty));
+                return HtmlNode.CreateNode(GetInputValue(node));
             
             // У пустых и непарных тегов ничего нет
             if (node.ChildNodes == null || node.ChildNodes.Count == 0)
@@ -96,7 +110,7 @@ namespace eTest2Word.Core
         /// </summary>
         /// <param name="node"></param>
         /// <returns></returns>
-        public bool NeedMerge(HtmlNode node)
+        private static bool NeedMerge(HtmlNode node)
         {
             return node.ChildNodes.Count(IsTextNode) > 1;
         }
@@ -105,7 +119,7 @@ namespace eTest2Word.Core
         /// Объединит одинаковые блоки текста
         /// </summary>
         /// <param name="parent"></param>
-        public void MergeTextNodes(HtmlNode parent)
+        private static void MergeTextNodes(HtmlNode parent)
         {
             var textNodes = parent.ChildNodes.Where(IsTextNode);
             var fullText = string.Join("", textNodes.Select(n => n.InnerText));

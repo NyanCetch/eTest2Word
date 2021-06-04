@@ -7,14 +7,6 @@ namespace eTest2Word.Tests
     [TestFixture]
     public class HtmlParsingTests
     {
-        private SimpleParser _parser;
-        
-        [SetUp]
-        public void Setup()
-        {
-            _parser = new SimpleParser();
-        }
-        
         [TestCase(
             "<div><p>Hello <span>this <span>fucking</span></span> World </p><p>My Friends</p></div", 
             ExpectedResult = "Hello this fucking World My Friends",
@@ -34,7 +26,7 @@ namespace eTest2Word.Tests
         public string SimplifyNodeTest(string htmlText)
         {
             var node = HtmlNode.CreateNode(htmlText);
-            var resultNode = _parser.SimplifyBlock(node);
+            var resultNode = HtmlTestUtility.SimplifyBlock(node);
 
             return resultNode.WriteTo();
         }
@@ -46,7 +38,7 @@ namespace eTest2Word.Tests
         public string SimplifyQuestionNodeTest(string htmlText)
         {
             var node = HtmlNode.CreateNode(htmlText);
-            _parser.SimplifyQuestionBlock(node);
+            HtmlTestUtility.SimplifyQuestionBlock(node);
 
             return node.WriteTo();
         }
