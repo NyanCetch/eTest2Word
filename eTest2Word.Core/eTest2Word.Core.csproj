@@ -51,8 +51,14 @@
     </ItemGroup>
     <ItemGroup>
         <Compile Include="HtmlExtensions.cs" />
+        <Compile Include="Models\QuestionBase.cs" />
+        <Compile Include="Models\QuestionMatch.cs" />
+        <Compile Include="Models\QuestionMultiChoice.cs" />
+        <Compile Include="Models\QuestionShortAnswer.cs" />
+        <Compile Include="Parsers\QuestionParserBase.cs" />
+        <Compile Include="Parsers\QuestionParserShortAnswer.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
-        <Compile Include="SimpleParser.cs" />
+        <Compile Include="HtmlTestUtility.cs" />
     </ItemGroup>
     <ItemGroup>
       <None Include="packages.config" />
