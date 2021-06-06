@@ -14,6 +14,7 @@ public abstract class QuestionBase
 
     public enum AnswerStatusType
     {
+        None,
         Correct,
         Incorrect,
         Partially
