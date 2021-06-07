@@ -2,6 +2,7 @@
 using System.IO;
 using HtmlAgilityPack;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace eTest2Word.Tests
 {
@@ -51,7 +52,10 @@ namespace eTest2Word.Tests
             var expectedResultFileName = GetFileName(expectedResultName, ResultSuffux);
             var expectedResultText = GetTextFromFile(expectedResultFileName);
 
-            return resultJsonText == expectedResultText;
+            var resultToken = JToken.Parse(resultJsonText);
+            var expectedResultToken = JToken.Parse(expectedResultText);
+            
+            return JToken.DeepEquals(resultToken, expectedResultToken);
         }
 
         public static bool TryCheck(string testName, Func<HtmlNode, object> handler)

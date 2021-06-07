@@ -67,6 +67,8 @@
       <Folder Include="TestsData\HtmlTestUtilityData" />
     </ItemGroup>
     <ItemGroup>
+      <Content Include="TestsData\QuestionParserData\Match_1_Data.txt" />
+      <Content Include="TestsData\QuestionParserData\Match_1_Result.txt" />
       <Content Include="TestsData\QuestionParserData\ShortAnswer_1_Data.txt" />
       <Content Include="TestsData\QuestionParserData\ShortAnswer_1_Result.txt" />
     </ItemGroup>

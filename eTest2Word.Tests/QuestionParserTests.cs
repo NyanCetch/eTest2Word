@@ -19,5 +19,17 @@ namespace eTest2Word.Tests
                 return question.Answers;
             }));
         }
+
+        [TestCase("Match_1", TestName = "Соответствие ответов")]
+        public void MatchTest(string caseName)
+        {
+            Assert.IsTrue(Helpers.TryCheck(caseName, node =>
+            {
+                var parser = new QuestionParserMatch();
+                var question = (QuestionMatch) parser.Parse(node);
+
+                return question.MatchMap;
+            }));
+        }
     }
 }
