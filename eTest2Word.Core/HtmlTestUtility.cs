@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Text.RegularExpressions;
 using HtmlAgilityPack;
 
 namespace eTest2Word.Core
@@ -14,12 +15,12 @@ namespace eTest2Word.Core
         /// <returns></returns>
         public static bool IsComplex(HtmlNode node)
         {
-            return (IsImageNode(node) || IsTextNode(node)) == false;
+            return (IsImageNode(node) || IsNonEmptyTextNode(node)) == false;
         }
 
-        public static bool IsTextNode(HtmlNode node)
+        public static bool IsNonEmptyTextNode(HtmlNode node)
         {
-            return node.Name is "#text";
+            return node.Name is "#text" && Regex.Match(node.InnerText, @"\S").Success;
         }
 
         public static bool IsImageNode(HtmlNode node)
@@ -55,6 +56,7 @@ namespace eTest2Word.Core
                 if (simplifiedNode == null)
                 {
                     node.ChildNodes.Remove(childNode);
+                    i -= 1;
                     continue;
                 }
 
@@ -82,7 +84,7 @@ namespace eTest2Word.Core
             // Если уже текст или изображение, их же и возвращаем обратно
             if (!IsComplex(node))
                 return node;
-
+            
             // Подпись для поля ввода в задании с вводом ответа обычно содержит мусор, удаляем 
             if (IsShortAnswerLabel(node))
                 return null;
@@ -91,7 +93,7 @@ namespace eTest2Word.Core
             if (node.Name is "input")
                 return HtmlNode.CreateNode(GetInputValue(node));
             
-            // У пустых и непарных тегов ничего нет
+            // У пустых и непарных тегов ничего нет, либо элемент не прошел проверку содержимого
             if (node.ChildNodes == null || node.ChildNodes.Count == 0)
                 return null;
             
@@ -102,7 +104,7 @@ namespace eTest2Word.Core
                 
                 // Если из элемента не удалось достать ничего,
                 // тогда убираем за ненадобностью
-                if (simpleNode == null || IsTextNode(simpleNode) && string.IsNullOrEmpty(simpleNode.InnerText))
+                if (simpleNode == null || IsNonEmptyTextNode(simpleNode) && string.IsNullOrEmpty(simpleNode.InnerText))
                 {
                     node.RemoveChild(complexNode);
                     continue;
@@ -127,7 +129,7 @@ namespace eTest2Word.Core
         /// <returns></returns>
         private static bool NeedMerge(HtmlNode node)
         {
-            return node.ChildNodes.Count(IsTextNode) > 1;
+            return node.ChildNodes.Count(IsNonEmptyTextNode) > 1;
         }
 
         /// <summary>
@@ -136,8 +138,12 @@ namespace eTest2Word.Core
         /// <param name="parent"></param>
         private static void MergeTextNodes(HtmlNode parent)
         {
-            var textNodes = parent.ChildNodes.Where(IsTextNode);
+            var textNodes = parent.ChildNodes.Where(IsNonEmptyTextNode);
             var fullText = string.Join("", textNodes.Select(n => n.InnerText));
+            var match = Regex.Match(fullText, @"\S");
+            if (!match.Success)
+                fullText = string.Empty;
+            
             var fullTextNode = HtmlNode.CreateNode(fullText);
 
             parent.ChildNodes.Clear();

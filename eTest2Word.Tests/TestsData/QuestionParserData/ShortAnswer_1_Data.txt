@@ -1,1 +1,3 @@
-﻿<input type='text' value='ABC'>
+﻿<div>
+    Тест для <input type='text' value='проверки'>, как парсер получает значения из <input type='text' value='нескольких полей ввода'>
+</div>

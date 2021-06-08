@@ -1,0 +1,67 @@
+﻿<div id="question-3929305-12" class="que multichoice deferredfeedback complete">
+	<div class="info">
+		<h3 class="no">Вопрос <span class="qno">14</span></h3>
+		<div class="state">Выполнен</div>
+		<div class="grade">Баллов: 1,0 из 1,0</div>
+		<div class="questionflag editable" aria-atomic="true" aria-relevant="text" aria-live="assertive" id="yui_3_17_2_1_1623094353740_148">
+			<input type="hidden" name="q3929305:12_:flagged" value="0">
+			<input type="hidden" value="qaid=44803178&amp;qubaid=3929305&amp;qid=J4ORhOo6GLWTz9YvYPuasg^^&amp;slot=12&amp;checksum=0d2d4e3561189e03e01e2698a4ae0fd8&amp;sesskey=gusFWBGyKy&amp;newstate=" class="questionflagpostdata">
+			<input type="hidden" class="questionflagvalue" id="q3929305:12_:flaggedcheckbox" name="q3929305:12_:flagged" value="0">
+			<input type="image" class="questionflagimage" src="https://e.sfu-kras.ru/theme/image.php/moove/core/1622437421/i/unflagged" title="Отметить этот вопрос флажком, чтобы не забыть о нём" alt="Не отмечено"><span class="questionflagtext" title="Отметить этот вопрос флажком, чтобы не забыть о нём">Отметить вопрос</span></div>
+	</div>
+	<div class="content" id="yui_3_17_2_1_1623094353740_322">
+		<div class="formulation clearfix" id="yui_3_17_2_1_1623094353740_321">
+			<h4 class="accesshide">Текст вопроса</h4>
+			<input type="hidden" name="q3929305:12_:sequencecheck" value="3">
+			<div class="qtext">
+			    <span><i>Кернинг&nbsp;</i>характеризует величину межсимвольного пробела в ...</span>
+				<p>
+					<br>
+				</p>
+			</div>
+			<div class="ablock" id="yui_3_17_2_1_1623094353740_320">
+				<div class="prompt">Выберите один ответ:</div>
+				<div class="answer" id="yui_3_17_2_1_1623094353740_319">
+					<div class="r0">
+						<input type="radio" name="q3929305:12_answer" disabled="disabled" value="0" id="q3929305:12_answer0">
+						<label for="q3929305:12_answer0" class="d-flex w-100"><span class="answernumber">a. </span>
+							<div class="flex-fill ml-1">
+								<p>1 символе</p>
+							</div>
+						</label>
+					</div>
+					<div class="r1">
+						<input type="radio" name="q3929305:12_answer" disabled="disabled" value="1" id="q3929305:12_answer1">
+						<label for="q3929305:12_answer1" class="d-flex w-100"><span class="answernumber">b. </span>
+							<div class="flex-fill ml-1">
+								<p>во всем тексте</p>
+							</div>
+						</label>
+					</div>
+					<div class="r0" id="yui_3_17_2_1_1623094353740_318">
+						<input type="radio" name="q3929305:12_answer" disabled="disabled" value="2" id="q3929305:12_answer2">
+						<label for="q3929305:12_answer2" class="d-flex w-100" id="yui_3_17_2_1_1623094353740_317"><span class="answernumber">c. </span>
+							<div class="flex-fill ml-1" id="yui_3_17_2_1_1623094353740_316">
+								<p id="yui_3_17_2_1_1623094353740_315">группе символов</p>
+							</div>
+						</label>
+					</div>
+					<div class="r1">
+						<input type="radio" name="q3929305:12_answer" disabled="disabled" value="3" id="q3929305:12_answer3" checked="checked">
+						<label for="q3929305:12_answer3" class="d-flex w-100"><span class="answernumber">d. </span>
+							<div class="flex-fill ml-1">
+								<p>2 символах</p>
+							</div>
+						</label>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="outcome clearfix">
+			<h4 class="accesshide">Отзыв</h4>
+			<div class="feedback">
+				<div class="specificfeedback">Ваш ответ верный.</div>
+			</div>
+		</div>
+	</div>
+</div>

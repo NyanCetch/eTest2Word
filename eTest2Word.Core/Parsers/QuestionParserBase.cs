@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Text.RegularExpressions;
 using HtmlAgilityPack;
 
@@ -40,15 +41,19 @@ namespace eTest2Word.Core.Parsers
             if (descriptionNode?.ChildNodes == null || descriptionNode.ChildNodes.Count == 0)
                 return new QuestionBase.DescriptionItem[0];
             
+            // Не забываем про то, что перед сборкой описания,
+            // блок вопроса нужно предварительно подготовить
+            HtmlTestUtility.SimplifyQuestionBlock(descriptionNode);
+            
             var itemList = new List<QuestionBase.DescriptionItem>();
             foreach (var childNode in descriptionNode.ChildNodes)
             {
                 var item = new QuestionBase.DescriptionItem();
             
-                if (HtmlTestUtility.IsTextNode(childNode))
+                if (HtmlTestUtility.IsNonEmptyTextNode(childNode))
                 {
                     item.Type = QuestionBase.DescriptionItem.ItemType.Text;
-                    item.Content = childNode.InnerText;
+                    item.Content = WebUtility.HtmlDecode(childNode.InnerText);
                 }
                 else if (HtmlTestUtility.IsImageNode(childNode))
                 {

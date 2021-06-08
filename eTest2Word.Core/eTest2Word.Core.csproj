@@ -61,6 +61,7 @@
         <Compile Include="Models\QuestionShortAnswer.cs" />
         <Compile Include="Parsers\QuestionParserBase.cs" />
         <Compile Include="Parsers\QuestionParserMatch.cs" />
+        <Compile Include="Parsers\QuestionParserMultiChoice.cs" />
         <Compile Include="Parsers\QuestionParserShortAnswer.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
         <Compile Include="HtmlTestUtility.cs" />
