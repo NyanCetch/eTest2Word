@@ -1,9 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Linq;
-using HtmlAgilityPack;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace eTest2Word.Tests
 {

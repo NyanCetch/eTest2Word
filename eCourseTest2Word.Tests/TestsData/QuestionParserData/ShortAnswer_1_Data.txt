@@ -1,0 +1,31 @@
+﻿<div id="question-3929305-30" class="que shortanswer deferredfeedback complete">
+	<div class="info">
+		<h3 class="no">Вопрос <span class="qno">7</span></h3>
+		<div class="state">Выполнен</div>
+		<div class="grade">Баллов: 1,0 из 1,0</div>
+		<div class="questionflag editable">
+			<input type="hidden" name="q3929305:30_:flagged">
+			<input type="hidden" class="questionflagpostdata">
+			<input type="hidden" class="questionflagvalue" name="q3929305:30_:flagged">
+			<input type="image" class="questionflagimage">
+		</div>
+	</div>
+	<div class="content">
+		<div class="formulation clearfix">
+			<h4>Текст вопроса</h4>
+			<input type="hidden">
+			<div class="qtext">
+				<p>
+				    Morbi egestas dolor non 
+					<label>Ответ</label>
+					<input type="text" name="dasdas_answer" value="faucibus.">
+				</p>
+				<p>
+                    Cras dignissim 
+                    <label>Ответ</label>
+                    <input type="text" name="dasdsasdd_answer" value="faucibus urna"> rutrum.
+                </p>
+			</div>
+		</div>
+	</div>
+</div>

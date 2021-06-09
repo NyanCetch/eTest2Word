@@ -8,7 +8,7 @@ namespace eTest2Word.Tests
     [TestFixture]
     public class QuestionParserTests
     {
-        [TestCase("ShortAnswer_1", TestName = "Сбор ответов из поле ввода")]
+        [TestCase("ShortAnswer_1", TestName = "Поля для ответов встроены в текст вопроса")]
         public void ShortAnswerTest(string testName)
         {
             Assert.IsTrue(Helpers.IsCheckPartiallyCorrect(testName, node =>

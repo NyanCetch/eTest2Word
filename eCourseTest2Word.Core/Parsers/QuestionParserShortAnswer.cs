@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Fizzler.Systems.HtmlAgilityPack;
 using HtmlAgilityPack;
 
 namespace eTest2Word.Core.Parsers
@@ -13,10 +14,10 @@ namespace eTest2Word.Core.Parsers
         {
             var result = new QuestionShortAnswer();
 
-            var inputNodes = node.SelectNodes("//input[@type='text']");
+            var inputNodes = node.QuerySelectorAll("input[name$='answer']").ToList();
             var valueList = new List<string>();
             
-            if (inputNodes != null && inputNodes.Count > 0)
+            if (inputNodes.Count > 0)
             {
                 foreach (var inputNode in inputNodes)
                 {

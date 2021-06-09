@@ -1,6 +1,4 @@
-﻿using eTest2Word.Core;
-using HtmlAgilityPack;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace eTest2Word.Tests
 {
