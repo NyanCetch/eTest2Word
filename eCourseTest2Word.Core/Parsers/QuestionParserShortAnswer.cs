@@ -3,7 +3,7 @@ using System.Linq;
 using Fizzler.Systems.HtmlAgilityPack;
 using HtmlAgilityPack;
 
-namespace eTest2Word.Core.Parsers
+namespace eCourseTest2Word.Core.Parsers
 {
     /// <summary>
     /// Парсер для задания типа "введите ответ"

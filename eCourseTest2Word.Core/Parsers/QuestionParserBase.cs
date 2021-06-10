@@ -4,7 +4,7 @@ using System.Net;
 using System.Text.RegularExpressions;
 using HtmlAgilityPack;
 
-namespace eTest2Word.Core.Parsers
+namespace eCourseTest2Word.Core.Parsers
 {
     public abstract class QuestionParserBase
     {

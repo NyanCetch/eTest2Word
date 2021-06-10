@@ -2,7 +2,7 @@
 using System.Linq;
 using HtmlAgilityPack;
 
-namespace eTest2Word.Core.Parsers
+namespace eCourseTest2Word.Core.Parsers
 {
     public class QuestionParserMultiChoice : QuestionParserBase
     {

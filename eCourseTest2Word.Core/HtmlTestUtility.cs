@@ -2,7 +2,7 @@
 using System.Text.RegularExpressions;
 using HtmlAgilityPack;
 
-namespace eTest2Word.Core
+namespace eCourseTest2Word.Core
 {
     public static class HtmlTestUtility
     {

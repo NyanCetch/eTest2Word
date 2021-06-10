@@ -1,7 +1,11 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
+using HtmlAgilityPack;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
-namespace eTest2Word.Tests
+namespace eCourseTest2Word.Tests
 {
     public static class Helpers
     {
@@ -22,9 +26,7 @@ namespace eTest2Word.Tests
 
         private static string GetTextFromFile(string fileName)
         {
-            var projectDirPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..");
-            var filesDirPath = Path.Combine(projectDirPath, DataDir);
-            var files = Directory.GetFiles(filesDirPath, fileName, SearchOption.AllDirectories);
+            var files = Directory.GetFiles(DataDir, fileName, SearchOption.AllDirectories);
             var fileText = File.ReadAllText(files[0]);
             return fileText;
         }

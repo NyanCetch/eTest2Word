@@ -1,6 +1,8 @@
-﻿using NUnit.Framework;
+﻿using eCourseTest2Word.Core;
+using HtmlAgilityPack;
+using NUnit.Framework;
 
-namespace eTest2Word.Tests
+namespace eCourseTest2Word.Tests
 {
     [TestFixture]
     public class HtmlTestUtilityTests
@@ -13,10 +15,6 @@ namespace eTest2Word.Tests
             "<div><span><i>Кернинг&nbsp;</i>характеризует величину межсимвольного пробела в ...</span><p><br></p></div>", 
             ExpectedResult = "Кернинг&nbsp;характеризует величину межсимвольного пробела в ...",
             TestName = "Стилизованный текст")]
-        [TestCase(
-            "<div><p>Проявленная фотопленка служат эталоном <label>Ответ</label><input type='text' value='черно-белого'> цвета.</p></div>",
-            ExpectedResult = "Проявленная фотопленка служат эталоном черно-белого цвета.",
-            TestName = "Поле ввода внутри текста")]
         [TestCase(
             "<p><img src=''><br></p>",
             ExpectedResult = "<img src=''>",

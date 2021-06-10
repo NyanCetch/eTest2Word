@@ -1,9 +1,7 @@
-﻿using System;
-using System.IO;
-using eTest2Word.Core.Parsers;
+﻿using eCourseTest2Word.Core.Parsers;
 using NUnit.Framework;
 
-namespace eTest2Word.Tests
+namespace eCourseTest2Word.Tests
 {
     [TestFixture]
     public class QuestionParserTests
@@ -16,7 +14,7 @@ namespace eTest2Word.Tests
                 var parser = new QuestionParserShortAnswer();
                 var question = (QuestionShortAnswer) parser.Parse(node);
 
-                return question.Answers;
+                return question;
             }));
         }
 

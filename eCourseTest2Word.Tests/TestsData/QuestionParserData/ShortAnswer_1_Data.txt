@@ -15,16 +15,8 @@
 			<h4>Текст вопроса</h4>
 			<input type="hidden">
 			<div class="qtext">
-				<p>
-				    Morbi egestas dolor non 
-					<label>Ответ</label>
-					<input type="text" name="dasdas_answer" value="faucibus.">
-				</p>
-				<p>
-                    Cras dignissim 
-                    <label>Ответ</label>
-                    <input type="text" name="dasdsasdd_answer" value="faucibus urna"> rutrum.
-                </p>
+				<p>Morbi egestas dolor non <label id="answer">Ответ</label><input type="text" name="dasdas_answer" value="faucibus."></p>
+				<p>Cras dignissim <label>Ответ</label><input type="text" name="dasdsasdd_answer" value="faucibus urna"> rutrum.</p>
 			</div>
 		</div>
 	</div>

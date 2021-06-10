@@ -1,7 +1,7 @@
 ﻿using System;
 using HtmlAgilityPack;
 
-namespace eTest2Word.Core
+namespace eCourseTest2Word.Core
 {
     public static class HtmlExtensions
     {
