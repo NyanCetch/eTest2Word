@@ -1,5 +1,12 @@
 public abstract class QuestionBase
 {
+    public enum QuestionType
+    {
+        Match,
+        ShortAnswer,
+        MultiChoice
+    }
+
     public class DescriptionItem
     {
         public enum ItemType
@@ -22,4 +29,5 @@ public abstract class QuestionBase
     
     public DescriptionItem[] DescriptionItems { get; set; }
     public AnswerStatusType StatusType { get; set; }
+    public QuestionType Type { get; protected set; }
 }

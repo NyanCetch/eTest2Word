@@ -9,4 +9,9 @@ public class QuestionMultiChoice : QuestionBase
     public AnswerMethodType AnswerMethod { get; set; }
     public string[] Options { get; set; }
     public int[] Selected { get; set; }
+
+    public QuestionMultiChoice()
+    {
+        Type = QuestionType.MultiChoice;
+    }
 }
