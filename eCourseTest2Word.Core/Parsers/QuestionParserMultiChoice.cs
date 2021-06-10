@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Fizzler.Systems.HtmlAgilityPack;
 using HtmlAgilityPack;
 
 namespace eCourseTest2Word.Core.Parsers
@@ -10,7 +11,7 @@ namespace eCourseTest2Word.Core.Parsers
         {
             var result = new QuestionMultiChoice();
 
-            var options = node.SelectNodes("//div[starts-with(@class, 'r')]");
+            var options = node.QuerySelectorAll("div[class^='r']").ToList();
 
             var answerList = new List<string>();
             var selectedList = new List<int>();
@@ -19,18 +20,17 @@ namespace eCourseTest2Word.Core.Parsers
                 var ind = i;
                 var option = options[i];
                 
-                var text = option.Descendants().First(n => n.Name == "p").InnerText;
+                var text = option.QuerySelector("label p").InnerText;
                 answerList.Add(text);
 
-                var isChecked = option.Descendants().First(n => n.Name == "input")
-                    .GetAttributes().Any(attr => attr.Name == "checked");
-                
+                var isChecked = option.QuerySelector("input[checked]") != null;
+
                 if (isChecked)
                     selectedList.Add(ind);
             }
 
             result.AnswerMethod = QuestionMultiChoice.AnswerMethodType.OneOption;
-            var anyInput = options.Descendants().First(n => n.Name == "input");
+            var anyInput = options[0].QuerySelector("input");
             if (anyInput.GetAttributeValue("type", string.Empty) == "checkbox")
                 result.AnswerMethod = QuestionMultiChoice.AnswerMethodType.SeveralOptions;
 
